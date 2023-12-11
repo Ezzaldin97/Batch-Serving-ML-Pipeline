@@ -1,0 +1,42 @@
+# ML Batch Job
+
+![](imgs/ml_batch_job.svg)
+
+## Objective:
+
+The primary objective of this Machine Learning Batch Job project is to develop a robust and efficient machine learning pipeline for automating the training and deployment of models. The pipeline aims to streamline the end-to-end process of model development, training, evaluation, and deployment, ensuring scalability, reproducibility, and maintainability.
+
+### Reproducibility:
+
+A well-designed machine learning pipeline enables the recreation of experiments, ensuring that results can be reproduced consistently. This is crucial for debugging, validating models, and comparing different versions.
+
+### Scalability:
+
+Scalability is essential for handling large datasets and accommodating the growing complexity of machine learning models. An efficient pipeline can easily scale to handle increased volumes of data and computational demands.
+
+### Automation:
+
+Automation reduces manual intervention, minimizing the chances of errors and improving overall efficiency. A good pipeline automates tasks such as data preprocessing, model training, and deployment, allowing for seamless integration into production environments.
+
+### Model Versioning:
+
+Version control for models is vital for tracking changes, understanding model evolution, and rolling back to previous versions if needed. A well-designed pipeline facilitates proper versioning of models, making it easier to manage and maintain model lifecycle.
+
+### Monitoring and Logging:
+
+A good pipeline incorporates monitoring and logging functionalities, enabling tracking of model performance and system behavior. This is essential for identifying issues promptly, ensuring model health, and making informed decisions for model improvements.
+
+## Project Description:
+
+create a robust, simple, effecient, and modern end to end ML Batch Serving Pipeline Using set of modern open-source/free Platforms/Tools including
+- [Free Weather API](https://open-meteo.com/)
+- [MotherDuck](https://app.motherduck.com/)
+- [Ploomber](https://ploomber.io/)
+- [Prefect](https://www.prefect.io/)
+- [EvidentlyAI](https://www.evidentlyai.com/)
+- [DVC](https://dvc.org/)
+- [Streamlit](https://streamlit.io/)
+- Github Actions
+- Python
+
+the project will focus on the best technical implementation to solve the issues in production environment, and how to use the mensioned platforms and tools to build an end to end pipeline.

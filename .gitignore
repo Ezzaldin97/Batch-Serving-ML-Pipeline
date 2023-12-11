@@ -1,0 +1,15 @@
+.env
+
+data/
+
+dev/
+
+history.city.list.json
+
+*.drawio
+
+sql/
+
+**/__pycache__
+
+.ruff_cache/
