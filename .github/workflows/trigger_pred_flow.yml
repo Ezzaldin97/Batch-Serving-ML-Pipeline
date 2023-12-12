@@ -2,7 +2,7 @@ name: Weather Forecasting Workflow Trigger
 
 on:
   schedule:
-    - cron: '0 2 * * *'
+    - cron: '0 9 * * *'
 
 jobs:
 
