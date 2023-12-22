@@ -1,7 +1,6 @@
 from prefect import task, flow
 from prefect.tasks import task_input_hash
 from app.api_data.data_models import URLParams, APIData
-#from geopy.geocoders import Nominatim
 import requests
 import duckdb
 import pandas as pd
@@ -78,14 +77,8 @@ def transform_api_data(data: APIData) -> pd.DataFrame:
     """
     print("Transform Data to Database Schema like")
     print("Get Location Data of API Data")
-    #lat, long = data["latitude"], data["longitude"]
-    #app = Nominatim(user_agent="ml_batch_job")
-    #coordinates = f"{lat}, {long}"
-    #location_data = app.reverse(coordinates, language="en").raw
     df = pd.DataFrame({
-        "location_id": [
-            75354428 for _ in range(len(data["hourly"]["time"]))
-        ],
+        "location_id": [75354428 for _ in range(len(data["hourly"]["time"]))],
         "reading_timestamp": data["hourly"]["time"],
         "temprature": data["hourly"]["temperature_2m"],
         "tz": [data["timezone"] for _ in range(len(data["hourly"]["time"]))],
