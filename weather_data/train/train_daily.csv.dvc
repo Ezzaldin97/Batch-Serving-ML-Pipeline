@@ -1,0 +1,5 @@
+outs:
+- md5: 86b8b9b7d39bb9144fdf4eb97b5ef4e0
+  size: 27787
+  hash: md5
+  path: train_daily.csv
