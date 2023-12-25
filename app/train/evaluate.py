@@ -12,7 +12,6 @@ import pickle
 import yaml
 import json
 import argparse
-import os
 
 
 class Eval:
