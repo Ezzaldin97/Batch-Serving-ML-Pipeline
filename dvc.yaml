@@ -1,0 +1,35 @@
+stages:
+  extract_data:
+    cmd: python app/train/extract_data.py --conf=conf/params.yaml
+    outs:
+    - weather_data/raw/weather_daily_data.csv
+  split_data:
+    cmd: python app/train/split_data.py --conf=conf/params.yaml
+    deps:
+    - app/train/split_data.py
+    - weather_data/raw/weather_daily_data.csv
+    outs:
+    - weather_data/test/test_weather_daily_data.csv
+    - weather_data/train/train_weather_daily_data.csv
+  train:
+    cmd: python app/train/train.py --conf=conf/params.yaml
+    deps:
+    - app/train/train.py
+    - weather_data/train/train_weather_daily_data.csv
+    - conf/params.yaml
+    outs:
+    - bin/model.pkl:
+        cache: false
+  evaluate:
+    cmd: python app/train/evaluate.py --conf conf/params.yaml
+    deps:
+    - bin/model.pkl
+    - conf/params.yaml
+    - weather_data/test/test_weather_daily_data.csv
+    - weather_data/train/train_weather_daily_data.csv
+    plots:
+    - results/evaluate/true_vs_pred.png:
+        cache: false
+    metrics:
+    - results/evaluate/metrics.json:
+        cache: false

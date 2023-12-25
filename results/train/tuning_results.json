@@ -1,0 +1,15 @@
+{
+    "best-score": 0.09597387265533987,
+    "best-params": {
+        "add_seasonality": {
+            "name": "quarterly",
+            "period": 91,
+            "fourier_order": 20
+        },
+        "alpha": 0.8,
+        "changepoint_prior_scale": 0.05,
+        "n_changepoints": 25,
+        "seasonality_prior_scale": 10.0,
+        "yearly_seasonality": 2
+    }
+}

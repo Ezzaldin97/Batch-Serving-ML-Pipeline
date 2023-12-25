@@ -1,0 +1,38 @@
+base:
+  random_state: 42
+
+extract_data:
+  output_path: 'weather_data/raw/weather_daily_data.csv'
+
+split_data:
+  train_output_path: 'weather_data/train/train_weather_daily_data.csv'
+  test_output_path: 'weather_data/test/test_weather_daily_data.csv'
+  test_size: 30
+
+tuner:
+  cv:
+    fh: 30
+    window_length: 365
+    step_size: 30
+  estimator_name: prophet
+  prophet:
+    params:
+      yearly_seasonality: [True, False, 2]
+      #weekly_seasonality: [True, False, 4, 8]
+      #daily_seasonality: [True, False]
+      #seasonality_mode: [additive, multiplicative]
+      n_changepoints: [25]
+      changepoint_prior_scale: [0.05]
+      seasonality_prior_scale: [10.0]
+      alpha: [0.8]
+      add_seasonality: 
+        - name: 'quarterly'
+          period: 91
+          fourier_order: 20
+  training_results: results/train/tuning_results.json
+  model_path: 'bin/model.pkl'
+
+evaluate: 
+  update_model_params: False
+  metrics_file: results/evaluate/metrics.json
+  true_and_prediction: results/evaluate/true_vs_pred.png
