@@ -15,3 +15,5 @@ sql/
 .ruff_cache/
 
 notebooks/
+
+weather-forecasting/

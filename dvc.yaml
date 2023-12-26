@@ -33,3 +33,10 @@ stages:
     metrics:
     - results/evaluate/metrics.json:
         cache: false
+params:
+- weather-forecasting/params.yaml
+metrics:
+- weather-forecasting/metrics.json
+plots:
+- weather-forecasting/plots/metrics:
+    x: step

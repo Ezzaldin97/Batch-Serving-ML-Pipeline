@@ -1,5 +1,6 @@
 base:
   random_state: 42
+  dvclive_dir: weather-forecasting
 
 extract_data:
   output_path: 'weather_data/raw/weather_daily_data.csv'

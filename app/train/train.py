@@ -4,6 +4,7 @@ from sktime.split import SlidingWindowSplitter
 from sktime.forecasting.model_selection import ForecastingGridSearchCV
 from sktime.performance_metrics.forecasting import mean_absolute_percentage_error
 from typing import Dict, Any
+from dvclive import Live
 import yaml
 import argparse
 import pickle
@@ -12,11 +13,16 @@ import json
 
 class Trainer:
     def __init__(
-        self, tuning_params: Dict[str, Any], random_state: int, df: pd.DataFrame
+        self,
+        tuning_params: Dict[str, Any],
+        random_state: int,
+        df: pd.DataFrame,
+        live_dir: str,
     ) -> None:
         self.tuning_params = tuning_params
         self.random_state = random_state
         self.df = df
+        self.live_dir = live_dir
 
     @staticmethod
     def get_supported_estimators() -> Dict:
@@ -28,22 +34,25 @@ class Trainer:
             window_length=self.tuning_params["cv"]["window_length"],
             step_length=self.tuning_params["cv"]["step_size"],
         )
-        estimators = Trainer.get_supported_estimators()
-        if self.tuning_params["estimator_name"] not in estimators.keys():
-            raise ValueError(
-                f'Unsupported estimator: {self.tuning_params["estimator_name"]}'
+        with Live(dir=self.live_dir, save_dvc_exp=True) as live:
+            estimators = Trainer.get_supported_estimators()
+            if self.tuning_params["estimator_name"] not in estimators.keys():
+                raise ValueError(
+                    f'Unsupported estimator: {self.tuning_params["estimator_name"]}'
+                )
+            forecaster = estimators[self.tuning_params["estimator_name"]]()
+            sscv = ForecastingGridSearchCV(
+                forecaster=forecaster,
+                cv=splitter,
+                param_grid=self.tuning_params[self.tuning_params["estimator_name"]][
+                    "params"
+                ],
+                verbose=1,
+                scoring=mean_absolute_percentage_error,
             )
-        forecaster = estimators[self.tuning_params["estimator_name"]]()
-        sscv = ForecastingGridSearchCV(
-            forecaster=forecaster,
-            cv=splitter,
-            param_grid=self.tuning_params[self.tuning_params["estimator_name"]][
-                "params"
-            ],
-            verbose=1,
-            scoring=mean_absolute_percentage_error,
-        )
-        sscv.fit(self.df)
+            sscv.fit(self.df)
+            live.log_metric("best-score", sscv.best_score_, timestamp=True)
+            live.log_params(sscv.best_params_)
         return sscv, sscv.best_score_, sscv.best_params_
 
     def train(self) -> None:
@@ -61,10 +70,14 @@ if __name__ == "__main__":
     args = args_parser.parse_args()
     with open(args.conf, mode="r") as file:
         conf = yaml.safe_load(file)
+    live_dir = conf["base"]["dvclive_dir"]
     df = pd.read_csv(conf["split_data"]["train_output_path"])
     df["reading_date"] = pd.to_datetime(df["reading_date"])
     df.set_index("reading_date", inplace=True)
     trainer = Trainer(
-        tuning_params=conf["tuner"], random_state=conf["base"]["random_state"], df=df
+        tuning_params=conf["tuner"],
+        random_state=conf["base"]["random_state"],
+        df=df,
+        live_dir=live_dir,
     )
     trainer.train()
