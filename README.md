@@ -40,3 +40,34 @@ create a robust, simple, effecient, and modern end to end ML Batch Serving Pipel
 - Python
 
 the project will focus on the best technical implementation to solve the issues in production environment, and how to use the mensioned platforms and tools to build an end to end pipeline.
+
+## Project Setup:
+
+- create an account on the following platforms:
+  - [MotherDuck](https://app.motherduck.com/)
+  - [Ploomber](https://ploomber.io/)
+- create motherduck token, and ploomber api key
+- use this url: [Weather-API](https://archive-api.open-meteo.com/v1/archive) to get the data, and for more information please visit the documentation.
+- install/use python>=3.10,<3.12
+- install [Poetry](https://python-poetry.org/) dependancy management
+- use `pyproject.toml` & `poetry.lock` files to install the project dependencies by
+```bash
+poetry install
+```
+- install Git & Make Command.
+
+## Project Development:
+
+### From API Data To MotherDuck:
+
+this is a very important, and critical part in every ML lifecycle, of course as all of us know ML models can't work without a continous feed of data in production, this data must be similar to the data used in production, and updated to fire the model.
+
+so, this part get the updated hourly API data everyday from source, and load it to MotherDuck Serverless Database.
+
+this job schedualed using Github Actions to run everyday at specific time to get the data, and load it into the table in motherduck.
+
+for more information about the implementation use the following:
+
+- [From API Data To MotherDuck readme](app/api_data/README.md)
+
+### Model Development:
