@@ -1798,50 +1798,6 @@ files = [
 ]
 
 [[package]]
-name = "future"
-version = "0.18.3"
-description = "Clean single-source support for Python 3 and 2"
-optional = false
-python-versions = ">=2.6, !=3.0.*, !=3.1.*, !=3.2.*"
-files = [
-    {file = "future-0.18.3.tar.gz", hash = "sha256:34a17436ed1e96697a86f9de3d15a3b0be01d8bc8de9c1dffd59fb8234ed5307"},
-]
-
-[[package]]
-name = "geographiclib"
-version = "2.0"
-description = "The geodesic routines from GeographicLib"
-optional = false
-python-versions = ">=3.7"
-files = [
-    {file = "geographiclib-2.0-py3-none-any.whl", hash = "sha256:6b7225248e45ff7edcee32becc4e0a1504c606ac5ee163a5656d482e0cd38734"},
-    {file = "geographiclib-2.0.tar.gz", hash = "sha256:f7f41c85dc3e1c2d3d935ec86660dc3b2c848c83e17f9a9e51ba9d5146a15859"},
-]
-
-[[package]]
-name = "geopy"
-version = "2.4.1"
-description = "Python Geocoding Toolbox"
-optional = false
-python-versions = ">=3.7"
-files = [
-    {file = "geopy-2.4.1-py3-none-any.whl", hash = "sha256:ae8b4bc5c1131820f4d75fce9d4aaaca0c85189b3aa5d64c3dcaf5e3b7b882a7"},
-    {file = "geopy-2.4.1.tar.gz", hash = "sha256:50283d8e7ad07d89be5cb027338c6365a32044df3ae2556ad3f52f4840b3d0d1"},
-]
-
-[package.dependencies]
-geographiclib = ">=1.52,<3"
-
-[package.extras]
-aiohttp = ["aiohttp"]
-dev = ["coverage", "flake8 (>=5.0,<5.1)", "isort (>=5.10.0,<5.11.0)", "pytest (>=3.10)", "pytest-asyncio (>=0.17)", "readme-renderer", "sphinx (<=4.3.2)", "sphinx-issues", "sphinx-rtd-theme (>=0.5.0)"]
-dev-docs = ["readme-renderer", "sphinx (<=4.3.2)", "sphinx-issues", "sphinx-rtd-theme (>=0.5.0)"]
-dev-lint = ["flake8 (>=5.0,<5.1)", "isort (>=5.10.0,<5.11.0)"]
-dev-test = ["coverage", "pytest (>=3.10)", "pytest-asyncio (>=0.17)", "sphinx (<=4.3.2)"]
-requests = ["requests (>=2.16.2)", "urllib3 (>=1.24.2)"]
-timezone = ["pytz"]
-
-[[package]]
 name = "gitdb"
 version = "4.0.11"
 description = "Git Object Database"
@@ -2160,33 +2116,6 @@ files = [
     {file = "hyperframe-6.0.1-py3-none-any.whl", hash = "sha256:0ec6bafd80d8ad2195c4f03aacba3a8265e57bc4cff261e802bf39970ed02a15"},
     {file = "hyperframe-6.0.1.tar.gz", hash = "sha256:ae510046231dc8e9ecb1a6586f63d2347bf4c8905914aa84ba585ae85f28a914"},
 ]
-
-[[package]]
-name = "hyperopt"
-version = "0.2.7"
-description = "Distributed Asynchronous Hyperparameter Optimization"
-optional = false
-python-versions = "*"
-files = [
-    {file = "hyperopt-0.2.7-py2.py3-none-any.whl", hash = "sha256:f3046d91fe4167dbf104365016596856b2524a609d22f047a066fc1ac796427c"},
-    {file = "hyperopt-0.2.7.tar.gz", hash = "sha256:1bf89ae58050bbd32c7307199046117feee245c2fd9ab6255c7308522b7ca149"},
-]
-
-[package.dependencies]
-cloudpickle = "*"
-future = "*"
-networkx = ">=2.2"
-numpy = "*"
-py4j = "*"
-scipy = "*"
-six = "*"
-tqdm = "*"
-
-[package.extras]
-atpe = ["lightgbm", "scikit-learn"]
-dev = ["black", "nose", "pre-commit", "pytest"]
-mongotrials = ["pymongo"]
-sparktrials = ["pyspark"]
 
 [[package]]
 name = "idna"
@@ -3628,17 +3557,6 @@ files = [
 
 [package.extras]
 tests = ["pytest"]
-
-[[package]]
-name = "py4j"
-version = "0.10.9.7"
-description = "Enables Python programs to dynamically access arbitrary Java objects"
-optional = false
-python-versions = "*"
-files = [
-    {file = "py4j-0.10.9.7-py2.py3-none-any.whl", hash = "sha256:85defdfd2b2376eb3abf5ca6474b51ab7e0de341c75a02f46dc9b5976f5a5c1b"},
-    {file = "py4j-0.10.9.7.tar.gz", hash = "sha256:0b6e5315bb3ada5cf62ac651d107bb2ebc02def3dee9d9548e3baac644ea8dbb"},
-]
 
 [[package]]
 name = "pyarrow"
@@ -5810,4 +5728,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.10,<3.12"
-content-hash = "2218ad119a965bface8f4132d8d43784d72cf227b9d6a4986b5050be844cd923"
+content-hash = "b2ad83bfb0876ada5ed38a875d8173513ac93c77408337c2157859a7897cef5c"
