@@ -1,5 +1,6 @@
 from prefect import flow
 from app.api_data.weather_data_flows import data_flow
+from app.inference.prepare_daily_data import data_prep_flow
 from dotenv import dotenv_values
 import argparse
 import datetime
@@ -31,6 +32,9 @@ def ml_job(data_url, params, db_token, running_date: str) -> None:
         db_token=db_token,
         deleting_thresh_dt=running_date,
     )
+    inference_flag = data_prep_flow(db_token=db_token, date=running_date)
+    if inference_flag:
+        print("Inference Started")
 
 
 if __name__ == "__main__":
