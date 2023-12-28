@@ -40,8 +40,8 @@ stages:
       size: 3154
     - path: conf/params.yaml
       hash: md5
-      md5: 5798a1704f53c53411b5479967971fa9
-      size: 1087
+      md5: 998d8849391eaaa128446e22bdb9f5b7
+      size: 1093
     - path: weather_data/train/train_weather_daily_data.csv
       hash: md5
       md5: 30933f5b1f233b9be53d558a77ef4ed2
@@ -49,19 +49,19 @@ stages:
     outs:
     - path: bin/model.pkl
       hash: md5
-      md5: fbd96fb8369bb98198bd9c10cb086852
-      size: 152900
+      md5: 362f82de0c9a26537847431ce41e1578
+      size: 152896
   evaluate:
     cmd: python app/train/evaluate.py --conf conf/params.yaml
     deps:
     - path: bin/model.pkl
       hash: md5
-      md5: fbd96fb8369bb98198bd9c10cb086852
-      size: 152900
+      md5: 362f82de0c9a26537847431ce41e1578
+      size: 152896
     - path: conf/params.yaml
       hash: md5
-      md5: 5798a1704f53c53411b5479967971fa9
-      size: 1087
+      md5: 998d8849391eaaa128446e22bdb9f5b7
+      size: 1093
     - path: weather_data/test/test_weather_daily_data.csv
       hash: md5
       md5: 4014f6547d560605ac97640ce99c7886

@@ -20,7 +20,7 @@ tuner:
     params:
       yearly_seasonality: [True, False, 2]
       #weekly_seasonality: [True, False, 4, 8]
-      #daily_seasonality: [True, False]
+      #daily_seasonality: [True, False, 2, 4]
       #seasonality_mode: [additive, multiplicative]
       n_changepoints: [25]
       changepoint_prior_scale: [0.05]
