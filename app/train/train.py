@@ -36,23 +36,23 @@ class Trainer:
         )
         with Live(dir=self.live_dir, save_dvc_exp=True) as live:
             estimators = Trainer.get_supported_estimators()
-            if self.tuning_params["estimator_name"] not in estimators.keys():
-                raise ValueError(
-                    f'Unsupported estimator: {self.tuning_params["estimator_name"]}'
+            for estimator in self.tuning_params["estimator_name"]:
+                if estimator not in estimators.keys():
+                    raise ValueError(
+                        f'Unsupported estimator: {self.tuning_params["estimator_name"]}'
+                    )
+                forecaster = estimators[estimator]()
+                sscv = ForecastingGridSearchCV(
+                    forecaster=forecaster,
+                    cv=splitter,
+                    param_grid=self.tuning_params[estimator]["params"],
+                    verbose=1,
+                    scoring=mean_absolute_percentage_error,
                 )
-            forecaster = estimators[self.tuning_params["estimator_name"]]()
-            sscv = ForecastingGridSearchCV(
-                forecaster=forecaster,
-                cv=splitter,
-                param_grid=self.tuning_params[self.tuning_params["estimator_name"]][
-                    "params"
-                ],
-                verbose=1,
-                scoring=mean_absolute_percentage_error,
-            )
-            sscv.fit(self.df)
-            live.log_metric("best-score", sscv.best_score_, timestamp=True)
-            live.log_params(sscv.best_params_)
+                sscv.fit(self.df)
+                live.log_metric("best-score", sscv.best_score_, timestamp=True)
+                live.log_params(sscv.best_params_)
+                live.next_step()
         return sscv, sscv.best_score_, sscv.best_params_
 
     def train(self) -> None:

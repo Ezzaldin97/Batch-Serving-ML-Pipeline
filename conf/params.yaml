@@ -15,7 +15,7 @@ tuner:
     fh: 30
     window_length: 365
     step_size: 30
-  estimator_name: prophet
+  estimator_name: [prophet]
   prophet:
     params:
       yearly_seasonality: [True, False, 2]
