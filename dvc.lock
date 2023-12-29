@@ -49,14 +49,14 @@ stages:
     outs:
     - path: bin/model.pkl
       hash: md5
-      md5: 985bbce6b28490a5b486306c27d34379
+      md5: e8937da2bc6460fc063f366455973e95
       size: 152896
   evaluate:
     cmd: python app/train/evaluate.py --conf conf/params.yaml
     deps:
     - path: bin/model.pkl
       hash: md5
-      md5: 985bbce6b28490a5b486306c27d34379
+      md5: e8937da2bc6460fc063f366455973e95
       size: 152896
     - path: conf/params.yaml
       hash: md5
