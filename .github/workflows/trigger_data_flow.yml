@@ -32,6 +32,7 @@ jobs:
     - name: Set up credentials
       run: |
           touch .env
+          echo METEO_URL=${{ secrets.METEO_URL }} >> .env
           echo MOTHERDUCK_TOKEN=${{ secrets.MOTHERDUCK_TOKEN }} >> .env
           echo PLOOMBER_API_KEY=${{ secrets.PLOOMBER_API_KEY }} >> .env
     - name: run Weather Forecasting Workflow
