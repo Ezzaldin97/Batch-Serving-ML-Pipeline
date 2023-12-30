@@ -8,6 +8,8 @@ history.city.list.json
 
 *.drawio
 
+*.bkp
+
 sql/
 
 **/__pycache__
