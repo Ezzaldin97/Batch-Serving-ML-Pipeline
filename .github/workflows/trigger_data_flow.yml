@@ -1,4 +1,4 @@
-name: Weather Forecasting Workflow Trigger
+name: Weather Data Processing Workflow Trigger
 
 on:
   schedule:
@@ -29,9 +29,6 @@ jobs:
     - name: Install deps
       run: |
         make install
-    - name: Lint with black & ruff
-      run: |
-        poetry run make linting
     - name: Set up credentials
       run: |
           touch .env
@@ -39,4 +36,4 @@ jobs:
           echo PLOOMBER_API_KEY=${{ secrets.PLOOMBER_API_KEY }} >> .env
     - name: run Weather Forecasting Workflow
       run: |
-          make run-pred-flow
+          make run-data-flow

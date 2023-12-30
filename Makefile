@@ -8,5 +8,5 @@ linting:
 train:
 	poetry run dvc repro
 
-run-pred-flow:
-	poetry run python pred_flow.py
+run-data-flow:
+	poetry run python data_flow.py

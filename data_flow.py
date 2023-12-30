@@ -7,13 +7,13 @@ import datetime
 
 
 @flow(
-    name="MLBatchFlow",
-    description="ML Batch Job Flow",
+    name="DataProcessingFlow",
+    description="Data Processing & Preparation Main Flow",
     validate_parameters=True,
     log_prints=True,
 )
-def ml_job(data_url, params, db_token, running_date: str) -> None:
-    """Parent Flow of Predictive ML Batch Job
+def data_processing_job(data_url, params, db_token, running_date: str) -> None:
+    """Parent Flow of Data Processing
 
     Parameters
     ----------
@@ -55,7 +55,7 @@ if __name__ == "__main__":
         "hourly": "temperature_2m",
         "timezone": "Africa/Cairo",
     }
-    ml_job(
+    data_processing_job(
         data_url=ENV["METEO_URL"],
         params=url_params,
         db_token=ENV["MOTHERDUCK_TOKEN"],
