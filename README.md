@@ -1,6 +1,6 @@
 # ML Batch Job
 
-![](imgs/ml_batch_job.drawio.svg)
+![](imgs/ml_batch_job.svg)
 
 ## Objective:
 
