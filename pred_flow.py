@@ -34,11 +34,12 @@ def ml_job(data_url, params, db_token, running_date: str) -> None:
     )
     inference_flag = data_prep_flow(db_token=db_token, date=running_date)
     if inference_flag:
-        print("Inference Started")
+        print("Inference Can be Started Safely")
+    else:
+        raise RuntimeError("Daily Data Preparation Flow Failed")
 
 
 if __name__ == "__main__":
-    API_URL = "https://archive-api.open-meteo.com/v1/archive"
     ENV = dotenv_values(".env")
     default_date = datetime.datetime.strftime(
         datetime.datetime.now() - datetime.timedelta(days=2), "%Y-%m-%d"
@@ -55,7 +56,7 @@ if __name__ == "__main__":
         "timezone": "Africa/Cairo",
     }
     ml_job(
-        data_url=API_URL,
+        data_url=ENV["METEO_URL"],
         params=url_params,
         db_token=ENV["MOTHERDUCK_TOKEN"],
         running_date=args.running_date,
