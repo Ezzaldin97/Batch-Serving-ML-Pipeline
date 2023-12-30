@@ -10,3 +10,6 @@ train:
 
 run-data-flow:
 	poetry run python data_flow.py
+
+run-pred-flow:
+	poetry run python pred_flow.py
