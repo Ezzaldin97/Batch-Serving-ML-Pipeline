@@ -5,6 +5,7 @@ import argparse
 import datetime
 import yaml
 
+
 @flow(
     name="InferenceFlow",
     description="Inference/Monitoring Main Flow",
@@ -23,9 +24,8 @@ def pred_flow(db_token, running_date: str, model_path: str) -> None:
     model_path : str
         path of model's pickle file
     """
-    forecast_flow(db_token=db_token, 
-                  date=running_date, 
-                  model_path=model_path)
+    forecast_flow(db_token=db_token, date=running_date, model_path=model_path)
+
 
 if __name__ == "__main__":
     ENV = dotenv_values(".env")
@@ -35,10 +35,10 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="ML Job Parameters")
     parser.add_argument("--running_date", default=default_date, type=str)
     args = parser.parse_args()
-    with open('conf/params.yaml', 'r') as f:
+    with open("conf/params.yaml", "r") as f:
         conf = yaml.safe_load(f)
     pred_flow(
         db_token=ENV["MOTHERDUCK_TOKEN"],
         running_date=args.running_date,
-        model_path=conf['tuner']['model_path']
+        model_path=conf["tuner"]["model_path"],
     )
