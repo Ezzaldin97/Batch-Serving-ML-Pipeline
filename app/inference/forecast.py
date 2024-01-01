@@ -49,7 +49,9 @@ def get_inference_data(conn, running_date: str) -> pd.DataFrame:
     log_prints=True,
     timeout_seconds=30,
 )
-def forecast_weather(hist_df: pd.DataFrame, model_path: str) -> pd.DataFrame:
+def forecast_weather(
+    hist_df: pd.DataFrame, model_path: str, running_date: str
+) -> pd.DataFrame:
     """forecast the temperature next 30 days
 
     Parameters
@@ -58,6 +60,8 @@ def forecast_weather(hist_df: pd.DataFrame, model_path: str) -> pd.DataFrame:
         historical temperature dataframe
     model_path : str
         path of pickle file
+    running_date: str
+        string format of pipeline running date
 
     Returns
     -------
@@ -70,6 +74,7 @@ def forecast_weather(hist_df: pd.DataFrame, model_path: str) -> pd.DataFrame:
         Exception class to raise if estimator is used before fitting
     """
     id = pd.Series([75354428 for _ in range(30)], name="location_id")
+    inference_date = pd.Series([running_date for _ in range(30)], name="inference_date")
     scoring_df = hist_df[["reading_date", "temperature"]]
     scoring_df.set_index("reading_date", inplace=True)
     with open(model_path, "rb") as pkl:
@@ -81,7 +86,7 @@ def forecast_weather(hist_df: pd.DataFrame, model_path: str) -> pd.DataFrame:
         )
         preds.reset_index(inplace=True)
         preds.columns = ["reading_date", "forecasted_temperature"]
-        preds = pd.concat([id, preds], axis=1)
+        preds = pd.concat([id, preds, inference_date], axis=1)
         return preds
     except NotFittedError:
         raise NotFittedError("Loaded Model isn't fitted on Training Data")
@@ -134,7 +139,9 @@ def forecast_flow(db_token: str, date: str, model_path: str) -> None:
         print("Getting Scoring Data From MotherDuck")
         df = get_inference_data(conn=conn, running_date=date)
         if len(df) > 0:
-            preds = forecast_weather(hist_df=df, model_path=model_path)
+            preds = forecast_weather(
+                hist_df=df, model_path=model_path, running_date=date
+            )
             print(f"Model Forecasted Next {len(preds)} days")
             load_forecasts_into_db(conn=conn, preds_df=preds)
             print("Data Loaded into MotherDuck")
