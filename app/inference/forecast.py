@@ -115,6 +115,7 @@ def load_forecasts_into_db(conn, preds_df: pd.DataFrame) -> None:
         " preds_df"
     )
 
+
 def delete_out_of_range_data(conn, thresh_date: str) -> None:
     print("Deleting Out of Range Data")
     conn.sql(f"""
