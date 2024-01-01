@@ -115,6 +115,14 @@ def load_forecasts_into_db(conn, preds_df: pd.DataFrame) -> None:
         " preds_df"
     )
 
+def delete_out_of_range_data(conn, thresh_date: str) -> None:
+    print("Deleting Out of Range Data")
+    conn.sql(f"""
+            DELETE FROM ml_apps.weather_forecasting.daily_forecasted_weather
+            WHERE inference_date <= CAST('{thresh_date}' AS DATE)-1000
+        """)
+    print("Data Deleted Successfully")
+
 
 @flow(
     name="WeatherForecastingFlow",
@@ -145,6 +153,7 @@ def forecast_flow(db_token: str, date: str, model_path: str) -> None:
             print(f"Model Forecasted Next {len(preds)} days")
             load_forecasts_into_db(conn=conn, preds_df=preds)
             print("Data Loaded into MotherDuck")
+            delete_out_of_range_data(conn=conn, thresh_date=date)
         else:
             print("No Records in Scoring data..")
     print("Connection with MotherDuck Closed")
