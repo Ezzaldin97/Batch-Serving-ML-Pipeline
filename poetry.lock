@@ -3443,6 +3443,21 @@ pyyaml = "*"
 dev = ["flake8", "invoke", "pkgmt", "pytest", "pywin32", "twine"]
 
 [[package]]
+name = "plotly"
+version = "5.18.0"
+description = "An open-source, interactive data visualization library for Python"
+optional = false
+python-versions = ">=3.6"
+files = [
+    {file = "plotly-5.18.0-py3-none-any.whl", hash = "sha256:23aa8ea2f4fb364a20d34ad38235524bd9d691bf5299e800bca608c31e8db8de"},
+    {file = "plotly-5.18.0.tar.gz", hash = "sha256:360a31e6fbb49d12b007036eb6929521343d6bee2236f8459915821baefa2cbb"},
+]
+
+[package.dependencies]
+packaging = "*"
+tenacity = ">=6.2.0"
+
+[[package]]
 name = "pmdarima"
 version = "2.0.4"
 description = "Python's forecast::auto.arima equivalent"
@@ -5897,4 +5912,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.10,<3.12"
-content-hash = "1a6337f102a5d6f49b570bafed08f13d9e01c7bb633470ea8eb2352aef76314c"
+content-hash = "4c4f413e797b6ddf510bbe1d29168c5230bc825c1c9e45b80745a2590cee1e1d"

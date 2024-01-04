@@ -25,6 +25,7 @@ seaborn = "^0.13.0"
 statsmodels = "^0.14.1"
 dvclive = "^3.4.0"
 tbats = "^1.1.0"
+plotly = "^5.13.0"
 
 
 [tool.poetry.group.dev.dependencies]
