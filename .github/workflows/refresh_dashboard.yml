@@ -1,0 +1,23 @@
+name: Refresh Dashboard
+
+on:
+  schedule:
+    - cron: '10 10 * * *'
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up credentials
+      run: |
+          cd forecasting_dashboard_app/
+          touch .env
+          echo MOTHERDUCK_TOKEN=${{ secrets.MOTHERDUCK_TOKEN }} >> .env
+    - name: Deploy Streamlit App to Ploomber-Cloud
+      run: |
+          cd forecasting_dashboard_app/
+          ploomber-cloud deploy
