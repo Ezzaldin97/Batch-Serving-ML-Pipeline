@@ -71,3 +71,25 @@ for more information about the implementation use the following:
 - [From API Data To MotherDuck readme](app/api_data/README.md)
 
 ### Model Development:
+
+ML Projects aren't a singular well-defined task, it is iterative process that can take months, or years to optimize model performance, meet business metrics, time complexity, and many other issues.
+
+through model development journey many things can happen, that make development chaotic:
+
+- many versions of experiments.
+- no versioning for model artifacts, models, and data
+- no unified platform to share results, data, and trails between multiple project developers.
+- randomness, and updating code in experiments can produce many issues.
+
+all of this reasons, must be considered when developing the model, and that's why using tools like **DVC, MLFlow, and many more** becomes very important, and skill that must be acquired by Data Scientists, and ML Engineers.
+
+this project uses:
+
+- **DVC**: 
+  - for Data, model, and artifacts version control
+  - automating training pipeline.
+- **DVC-VSCode Extension**: for experiment tracking(DVC Studio can be used for Team.)
+
+for more information about the implementation use the following:
+
+- [Training Using DVC](app/train/README.md)
