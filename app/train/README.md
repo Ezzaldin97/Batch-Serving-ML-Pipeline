@@ -40,3 +40,29 @@ no push your files to remote/local stoarge:
 dvc push
 ```
 
+after many notebooks, and trails of machine learning experiments, it is effecient to convert the training notebooks to reusable code, so that we can automate the training, rather than converting every new change to new notebook that can make development between members missy if no naming protocol defined, also, to ensure reproducability when changing/updating pipeline.
+
+to start converting notebooks to reusable code, let's follow the below steps:
+
+- translate notebooks code to reusable code by creating every step needed to train models to functions/classes.
+- now, convert notebooks to scripts (from `.ipynb` to `.py`), this directory contains all code used to automate training: [training](./)
+- ensure that no hardcoded path/parameters in your reusable code, for this part move all parameters and paths to `.yml` file, to use it as an argument for your code, take a look at [params-file](../../conf/params.yaml)
+- use DVC now to create `dvc.yaml` file that consists of all stages of training pipeline, to start create `dvc.yml` file and add stages use:
+
+```bash
+dvc stage add \
+   -n <name of the stage> \
+   -p <parameters> \
+   -o <expected output file of stage> \
+   -d <dependencies needed to run the stage> \
+   <command to run the stage>
+```
+
+this will create file like this [automate-training](../../dvc.yaml) & add stage to your project
+
+- after adding all stages needed for training pipeline, run the pipeline using:
+
+```bash
+dvc repro
+```
+this will run the pipeline, and skip the stages if no modifications applied to it.
