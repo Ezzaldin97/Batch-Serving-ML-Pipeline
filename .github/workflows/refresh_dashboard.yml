@@ -28,4 +28,5 @@ jobs:
     - name: Deploy Streamlit App to Ploomber-Cloud
       run: |
           cd forecasting_dashboard_app/
+          ploomber-cloud key ${{ secrets.PLOOMBER_API_KEY }}
           ploomber-cloud deploy
