@@ -66,3 +66,14 @@ this will create file like this [automate-training](../../dvc.yaml) & add stage 
 dvc repro
 ```
 this will run the pipeline, and skip the stages if no modifications applied to it.
+
+automating training will save time, increase collaboration, and ensure reproducability, and this will make the training easy, accurate, and will increase number of experiments for all teams members.
+
+now, we need a system to track all of this experiments(models, data, hyperparamsters, and more..), and make them sharable between developers to enhance collaboration, and get the latest, and best result.
+
+**DVC** can be used as experiment tracking tool, it can be integrated with **DVC Studio**(to make experiments sharable between team members), or **DVC VSCode Extension**(used for single developer to visualize experiments & plots in UI).
+
+I used VSCode Extension
+
+![](../../imgs/exp-tracking.PNG)
+
