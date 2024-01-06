@@ -55,6 +55,11 @@ the project will focus on the best technical implementation to solve the issues 
 poetry install
 ```
 - install Git & Make Command.
+- add all your secret keys to github repository secrets, I added the following:
+  - MOTHERDUCK_TOKEN
+  - PLOOMBER_API_KEY
+  - METERO_URL
+feel free to add more based on your needs.
 
 ## Project Development:
 
