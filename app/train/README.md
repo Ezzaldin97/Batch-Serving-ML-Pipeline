@@ -77,3 +77,26 @@ I used VSCode Extension
 
 ![](../../imgs/exp-tracking.PNG)
 
+to start tracking metrices, and plots using DVC, we need first to install `dvclive` this is additional package for experiment tracking for dvc, and it is installed if you setup the project requirements, then we need to add some coding blocks to our training scripts like here [train](./train.py)
+
+```python
+from dvclive import Live
+
+#
+#
+#
+#
+#
+# loop on something..
+# like some models will be optimized by grid search
+with Live(dir=self.live_dir, save_dvc_exp=True) as live:
+   for model in models:
+      #
+      #
+      #
+      #
+      # log here everything you need like parameters, evaluation scores, etc...
+      live.log_metric("best-score", score, timestamp=True)
+      live.log_params(model_params)
+      live.next_step()
+```
