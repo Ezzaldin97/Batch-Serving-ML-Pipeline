@@ -100,3 +100,23 @@ with Live(dir=self.live_dir, save_dvc_exp=True) as live:
       live.log_params(model_params)
       live.next_step()
 ```
+
+add to `dvc.yml` file stages of `params, metrics, plots` to define the parameters needed for the experiments, output of the experiments like the plots, and metrics like the following:
+
+```yaml
+params:
+- weather-forecasting/params.yaml
+metrics:
+- weather-forecasting/metrics.json
+plots:
+- weather-forecasting/plots/metrics:
+    x: step
+```
+
+then run 
+
+```bash
+dvc exp run
+```
+
+this is a similar version of `dvc repro`, but it is especially designed for experiments.
