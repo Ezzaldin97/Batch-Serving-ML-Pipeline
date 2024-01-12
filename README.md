@@ -49,7 +49,7 @@ the project will focus on the best technical implementation to solve the issues 
 - create motherduck token, and ploomber api key
 - use this url: [Weather-API](https://archive-api.open-meteo.com/v1/archive) to get the data, and for more information please visit the documentation.
 - install/use python>=3.10,<3.12
-- install [Poetry](https://python-poetry.org/) dependancy management
+- install [Poetry](https://python-poetry.org/) dependancy management, or create a virtual environment, and use `requirements.txt` to install needed packages.
 - use `pyproject.toml` & `poetry.lock` files to install the project dependencies by
 ```bash
 poetry install
