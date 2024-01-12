@@ -30,6 +30,7 @@ plotly = "^5.13.0"
 
 [tool.poetry.group.dev.dependencies]
 ipykernel = "^6.27.1"
+pipreqs = "^0.4.13"
 
 
 [tool.poetry.group.linting.dependencies]
