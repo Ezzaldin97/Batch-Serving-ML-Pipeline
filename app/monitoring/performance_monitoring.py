@@ -1,5 +1,8 @@
 from prefect import task, flow
 from prefect.tasks import task_input_hash
+from typing import Dict, Any
+from evidently.report import Report
+from evidently.metrics import *
 import duckdb
 import pandas as pd
 import datetime
@@ -57,6 +60,21 @@ def get_monitoring_data(conn, running_date: str) -> pd.DataFrame:
     return df
 
 
+@task(
+    name="PerformanceReport",
+    description="calculate performance measures of the last 30 days",
+    tags=["Performance", "Last30", "Real/Forecasting"],
+    retry_delay_seconds=30,
+    retries=3,
+    log_prints=True,
+    timeout_seconds=120,
+)
+def perf_report(
+    df: pd.DataFrame, location_id: str, monitoring_dt: str
+) -> Dict[str, Any]:
+    pass
+
+
 @flow(
     name="PerformanceMonitoringFlow",
     description="flow of model performance monitoring",
@@ -76,5 +94,9 @@ def data_prep_flow(db_token: str, date: str) -> None:
     with duckdb.connect(f"md:?motherduck_token={db_token}") as conn:
         print("Connection Successfully intiated")
         df = get_monitoring_data(conn, date)
-        true_df = df[["reading_date", "temperature"]]
-        pred_df = df[["reading_date", "forecasted_temperature"]]
+        perf_df = df[["reading_date", "temperature", "forecasted_temperature"]]
+        perf_df.rename(
+            columns={"temperature": "target", "forecasted_temperature": "prediction"},
+            inplace=True,
+        )
+        perf_df.set_index("reading_date", inplace=True)
