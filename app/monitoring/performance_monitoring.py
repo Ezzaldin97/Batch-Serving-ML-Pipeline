@@ -1,8 +1,6 @@
 from prefect import task, flow
 from prefect.tasks import task_input_hash
 from typing import Dict, Any
-from evidently.report import Report
-from evidently.metrics import *
 import duckdb
 import pandas as pd
 import datetime
