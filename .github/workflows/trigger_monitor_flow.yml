@@ -1,0 +1,40 @@
+name: Monitoring Workflow Trigger
+
+on:
+  schedule:
+    - cron: '30 10 * * *'
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v3
+      with:
+        python-version: "3.10"
+    - name: Install latest version of Poetry
+      run: |
+        curl -sSL https://install.python-poetry.org | python -
+    - name: Add Poetry to $PATH
+      run: |
+        echo "${HOME}/.poetry/bin" >> $GITHUB_PATH
+    - name: Get Poetry version
+      run: poetry --version
+    - name: Check pyproject.toml validity
+      run: poetry check --no-interaction
+    - name: Install deps
+      run: |
+        make install
+    - name: Set up credentials
+      run: |
+          touch .env
+          echo METEO_URL=${{ secrets.METEO_URL }} >> .env
+          echo MOTHERDUCK_TOKEN=${{ secrets.MOTHERDUCK_TOKEN }} >> .env
+          echo PLOOMBER_API_KEY=${{ secrets.PLOOMBER_API_KEY }} >> .env
+    - name: run Monitoring Workflow
+      run: |
+          make run-monitor-flow

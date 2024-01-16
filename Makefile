@@ -13,3 +13,6 @@ run-data-flow:
 
 run-pred-flow:
 	poetry run python pred_flow.py
+
+run-monitor-flow:
+	poetry run python monitor_flow.py
