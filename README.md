@@ -153,4 +153,4 @@ after a successfull training process, the trained model can be deployed to make 
 
 here we developed a batch-serving forecasting application, and consider everything we need to produce a successfull up-to-date application that forecast the temperature in Cairo/Egypt, for more information about the implementation:
 
-[Inference](app/inference/README.md)
+- [Inference](app/inference/README.md)
