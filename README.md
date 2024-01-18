@@ -61,6 +61,52 @@ poetry install
   - METERO_URL
 feel free to add more based on your needs.
 
+- create the following schema in MotherDuck:
+```SQL
+-- create database 'ml_apps' & schema for this project 'weather_forecasting'
+
+-- hourly temperature data
+CREATE OR REPLACE TABLE ml_apps.weather_forecasting.hourly_weather_data(
+  location_id INTEGER,
+  reading_timestamp TIMESTAMP_NS,
+  temperature FLOAT NOT NULL,
+  tz VARCHAR(50)
+);
+
+-- daily weather data table
+CREATE OR REPLACE TABLE ml_apps.weather_forecasting.daily_weather_data(
+  location_id INTEGER,
+  reading_date TIMESTAMP_NS,
+  temperature FLOAT NOT NULL
+);
+
+-- inference TABLE...
+CREATE OR REPLACE TABLE ml_apps.weather_forecasting.daily_forecasted_weather(
+  location_id INTEGER,
+  reading_date TIMESTAMP_NS,
+  forecasted_temperature FLOAT NOT NULL,
+  inference_date TIMESTAMP_NS
+);
+
+-- performance monitoring last 30 days..
+CREATE OR REPLACE TABLE ml_apps.weather_forecasting.performance_monitoring(
+  location_id INTEGER,
+  monitoring_date TIMESTAMP_NS,
+  RMSE FLOAT NOT NULL,
+  mean_error FLOAT NOT NULL,
+  error_std FLOAT NOT NULL,
+  mean_abs_error FLOAT NOT NULL,
+  abs_error_std FLOAT NOT NULL,
+  mean_abs_perc_error FLOAT NOT NULL,
+  abs_perc_error_std FLOAT NOT NULL,
+  order_statistic_medians_x FLOAT[] NOT NULL,
+  order_statistic_medians_y FLOAT[] NOT NULL,
+  slope FLOAT NOT NULL,
+  intercept FLOAT NOT NULL,
+  r FLOAT NOT NULL
+);
+```
+
 ## Project Development:
 
 ### From API Data To MotherDuck:
@@ -98,3 +144,5 @@ this project uses:
 for more information about the implementation use the following:
 
 - [Training Using DVC](app/train/README.md)
+
+## Inference:
