@@ -145,4 +145,12 @@ for more information about the implementation use the following:
 
 - [Training Using DVC](app/train/README.md)
 
-## Inference:
+## Inference/Prodcutionizing the Model:
+
+in machine learning **inference** refers to making predictions using the trained model.
+
+after a successfull training process, the trained model can be deployed to make predictions on unseen data, and here **MLOps Engineer/Data Scientist/Developer** must make sure about the requirements of production environment to produce accurate results, also must make sure that the requirements of the application is considered like low latency in real-time applications.
+
+here we developed a batch-serving forecasting application, and consider everything we need to produce a successfull up-to-date application that forecast the temperature in Cairo/Egypt, for more information about the implementation:
+
+[Inference](app/inference/README.md)
