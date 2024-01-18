@@ -41,6 +41,15 @@ create a robust, simple, effecient, and modern end to end ML Batch Serving Pipel
 
 the project will focus on the best technical implementation to solve the issues in production environment, and how to use the mensioned platforms and tools to build an end to end pipeline.
 
+## Prerequisities:
+
+- Intermediate Python
+- Machine Learning/Time Series Forecasting Concepts
+- SQL
+- Bash Scripting
+- Git Fundamentals
+- Basic Understanding of Github Actions(Preferrable)
+
 ## Project Setup:
 
 - create an account on the following platforms:
