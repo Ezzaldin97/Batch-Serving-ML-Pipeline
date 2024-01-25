@@ -163,3 +163,20 @@ after a successfull training process, the trained model can be deployed to make 
 here we developed a batch-serving forecasting application, and consider everything we need to produce a successfull up-to-date application that forecast the temperature in Cairo/Egypt, for more information about the implementation:
 
 - [Inference](app/inference/README.md)
+
+## Monitoring (Data Quality/Model Performance):
+
+track & analyze model performance in production is one of the important concepts in MLOps, especially for Risky Models that support decisions, just imagine here that business team use a ML Model, and Performance of this Model in Production dropped for some reason 😮😮.
+
+a reliable ML Pipelines have a monitoring service, to help teams track model performance, data quality, and features/target drift.
+
+monitoring ML models help specialized teams to detect issues, understand root-cause, analyze, decision whether to retrain or not, and document the problems and issues that happened to avoid repeating it in the future.
+
+monitoring service can be divided into:
+
+- Business(Product) KPIs
+- Model Quality
+- Data Quality/Drift
+- Software Health
+
+in this project, I tried to create a performance monitoring service using evidentlyAI, and Streamlit, find more about the implementation here: [Monitoring](app/monitoring/README.md)
