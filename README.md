@@ -180,3 +180,25 @@ monitoring service can be divided into:
 - Software Health
 
 in this project, I tried to create a performance monitoring service using evidentlyAI, and Streamlit, find more about the implementation here: [Monitoring](app/monitoring/README.md)
+
+## Machine Learning application UI Deployment 🎉🎉:
+
+Finally, Last Thing is to show your results, and make it accessible to anyone 🤗.
+
+Using **streamlit**, and **Ploomber Cloud**, you can create an amazing multi page application, and host for free on ploomber cloud 😎.
+
+for more about implementation: [Application UI](forecasting_dashboard_app/README.md)
+
+you can access it from here: [temperature-forecasting-app](https://lingering-butterfly-3765.ploomberapp.io/)
+
+## Resources:
+
+- [API-Documentation](https://open-meteo.com/en/docs/)
+- [Prefect-Documentation](https://docs.prefect.io/latest/)
+- [Duckdb](https://duckdb.org/)
+- [Duckdb-Book](https://motherduck.com/duckdb-book/)
+- [MotherDuck](https://motherduck.com/docs/getting-started)
+- [DVC-Course](https://learn.iterative.ai/courses)
+- [EvidentlyAI-Course](https://evidentlyai.thinkific.com/courses/ml-observability-course)
+- [Monitor-in-Production](https://neptune.ai/blog/how-to-monitor-your-models-in-production-guide)
+- [Trigger-Using-Github-Actions](https://ploomber.io/blog/end-to-end/)
