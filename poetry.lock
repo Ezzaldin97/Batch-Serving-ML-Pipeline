@@ -3439,18 +3439,18 @@ test = ["appdirs (==1.4.4)", "covdefaults (>=2.3)", "pytest (>=7.4)", "pytest-co
 
 [[package]]
 name = "ploomber-cloud"
-version = "0.1.1"
+version = "0.1.7"
 description = ""
 optional = false
 python-versions = "*"
 files = [
-    {file = "ploomber-cloud-0.1.1.tar.gz", hash = "sha256:e6a66a8e70eb1b14d5d549ba4e08126519b557086cc6bd0c35710e43a39d2569"},
-    {file = "ploomber_cloud-0.1.1-py3-none-any.whl", hash = "sha256:47a392b77b3c4c934564a3de3ecbd664fdd3ceabb355d355a8fb47631f869a83"},
+    {file = "ploomber-cloud-0.1.7.tar.gz", hash = "sha256:e91008c565cd7d3aeaeb04f8261b7e8c67877c9d658cbb441232e2bea992149f"},
+    {file = "ploomber_cloud-0.1.7-py3-none-any.whl", hash = "sha256:697adab4d42a46caf1f13e3a0e59776f1623e38bac306f489d8c239fb5d94653"},
 ]
 
 [package.dependencies]
 click = "*"
-ploomber-core = ">=0.2.16"
+ploomber-core = ">=0.2.19"
 requests = "*"
 
 [package.extras]
@@ -3458,17 +3458,16 @@ dev = ["flake8", "ipdb", "pkgmt", "pytest", "twine"]
 
 [[package]]
 name = "ploomber-core"
-version = "0.2.18"
+version = "0.2.23"
 description = ""
 optional = false
 python-versions = "*"
 files = [
-    {file = "ploomber-core-0.2.18.tar.gz", hash = "sha256:6e66f8b0dec4feea2ce457c2d8507387c1e9c62562bd8e61193c8e7c8630f377"},
-    {file = "ploomber_core-0.2.18-py3-none-any.whl", hash = "sha256:2986f3ea1cc78758ea948c3ac899412f1d4245c7a5fed2dda80a09ddcfe255a3"},
+    {file = "ploomber-core-0.2.23.tar.gz", hash = "sha256:2c34c2b53c059968c6881a99a3d9a7722e6f3a790e6a36c346f1e310af87937e"},
+    {file = "ploomber_core-0.2.23-py3-none-any.whl", hash = "sha256:24742ed4623891072e870c298c7286f07523b3d2d198186cb1ae0e152d6b800d"},
 ]
 
 [package.dependencies]
-click = "*"
 posthog = "*"
 pyyaml = "*"
 
