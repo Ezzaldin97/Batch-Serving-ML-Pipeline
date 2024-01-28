@@ -189,7 +189,7 @@ Using **streamlit**, and **Ploomber Cloud**, you can create an amazing multi pag
 
 for more about implementation: [Application UI](forecasting_dashboard_app/README.md)
 
-you can access it from here: [temperature-forecasting-app](https://lingering-butterfly-3765.ploomberapp.io/)
+you can access it from here: [temperature-forecasting-app](https://tiny-salad-1121.ploomberapp.io/)
 
 ## Resources:
 
